@@ -1,0 +1,95 @@
+<div class="contenedor">
+
+  <app-progress-bar *ngIf="loading"> </app-progress-bar>
+
+
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="list-users.component.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  </head>
+
+  <body>
+    <div *ngIf="listUsers.length == 1" class="card">
+      <div *ngFor="let user of listUsers">
+        <div class="header">
+          <img class="fondo" [src]="backLink">
+          <!-- <img class="logo" [src]="logoLink"> -->
+
+          <h3 class="main-title">{{user.businessName}}</h3>
+
+          <p>{{user.businessJob}}</p>
+        </div>
+
+        <div class="body">
+
+          <div class="uno">
+            <a style="color: black;"><i class="fa fa-map-marker"> {{user.businessAddress}}</i></a>
+          </div>
+
+          <div class="dos">
+            <a style="color: black;" href="mailto:{{user.businessEmail}}?Subject=Aquí%20el%20asunto%20del%20mail"><i
+                class="fas fa-envelope"> {{user.businessEmail}}</i></a>
+          </div>
+
+          <div class="cuatro">
+            <a style="color: black;" href="https://wa.me/{{user.businessPhone}}/?text=tu%20texto%20personalizado"
+              target="_blank"><i class="fas fa-phone-alt"> {{user.businessPhone}}</i> </a>
+          </div>
+
+          <div class="tres">
+            <app-qr-code>
+              <ng-content></ng-content>
+            </app-qr-code>
+          </div>
+
+        </div>
+        <div class="footer">
+          <div class="box">
+
+            <div *ngIf="user.facebookLink" class="one">
+              <a href="{{user.facebookLink}}" target="_blank"><i class="fab fa-facebook"></i></a>
+            </div>
+
+            <!-- <div *ngIf="user.twitterLink" class="two">
+              <a href="{{user.twitterLink}}" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div> -->
+
+            <div *ngIf="user.linkedinLink" class="three">
+              <a href="{{user.linkedinLink}}" target="_blank"> <i class="fab fa-linkedin-in"></i></a>
+            </div>
+
+            <div *ngIf="user.businessWebsite" class="four">
+              <a href="{{user.businessWebsite}}" target="_blank"> <i class="fas fa-globe-americas"></i></a>
+            </div>
+
+            <div class="five">
+              <i (click)="share()" class="fas fa-share"></i>
+            </div>
+
+            <div class="six download">
+              <i (click)="installPWA()" class="fa fa-download"></i>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </body>
+
+  </html>
+
+
+
+</div> <!-- Cierre del contenedor -->

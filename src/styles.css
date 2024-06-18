@@ -1,0 +1,14 @@
+body {
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-position: center center;
+   overflow-x: hidden;
+   
+   background: rgb(0,94,153);
+   background: linear-gradient(90deg, rgba(0,94,153,1) 0%, rgba(0,79,149,1) 25%, rgba(0,19,73,1) 100%);
+   height: 150%;
+}
+
+
+   

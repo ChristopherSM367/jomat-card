@@ -1,0 +1,98 @@
+<div class="contenedor">
+    <app-progress-bar *ngIf="loading"></app-progress-bar>
+
+    <div *ngIf="!loading" class="row mt-4">
+        <div class="col-ls-1 offset-lg-1">
+            <div class="card mb-3" style="max-width: 50rem; border-radius: 4%;">
+                <div class="header text-center mt-4"
+                    style="color: #01588f;  font-size: 37px; font-family:'Bebas Neue', cursive;">{{
+                    operacion }} Usuario</div>
+                <div class="card-body" style="border-radius: 4%;">
+
+                    <form [formGroup]="form" (ngSubmit)="addUser()" class="form">
+
+                        <input formControlName="id" type="text" class="form-control text-dark"
+                            aria-label="Amount (to the nearest dollar)" readonly [value]=" this.texto + defaultId"
+                            style="font-weight: bold; font-size: 18px;">
+
+                        <input formControlName="businessName" type="text" class="form-control mt-2 text-dark"
+                            placeholder="Ingresar tu nombre completo" style="font-size: 18px;">
+                        <span
+                            *ngIf="form.get('businessName')?.hasError('required') && form.get('businessName')?.touched">
+                            Este campo nombre es obligatorio
+                        </span>
+
+                        <input formControlName="businessJob" type="text" class="form-control mt-2 text-dark"
+                            placeholder="Ingresar tu especialidad" style="font-size: 18px;">
+                        <span *ngIf="form.get('businessJob')?.hasError('required') && form.get('businessJob')?.touched">
+                            Este campo especialidad es obligatorio
+                        </span>
+
+                        <input formControlName="businessLogo" type="text" class="form-control mt-2 text-dark"
+                            placeholder="Ingresar link de logo (formato img)" style="font-size: 18px;">
+                        <span
+                            *ngIf="form.get('businessLogo')?.hasError('required') && form.get('businessLogo')?.touched">
+                            Este campo logo es obligatorio
+                        </span>
+
+                        <input formControlName="backgroundLink" type="text" class="form-control mt-2 text-dark"
+                            placeholder="Ingresar link de imagen de fondo (formato img)" style="font-size: 18px;">
+                        <span
+                            *ngIf="form.get('backgroundLink')?.hasError('required') && form.get('backgroundLink')?.touched">
+                            Este campo fondo es obligatorio
+                        </span>
+
+                        <input formControlName="businessAddress" type="text" class="form-control mt-2 text-dark"
+                            placeholder="Ingresar dirección" style="font-size: 18px;">
+                        <span
+                            *ngIf="form.get('businessAddress')?.hasError('required') && form.get('businessAddress')?.touched">
+                            Este campo dirección es obligatorio
+                        </span>
+
+                        <input formControlName="businessPhone" type="number" maxlength="10" oninput="this.value = this.value.slice(0, 10)" class="form-control mt-2 text-dark"
+                            placeholder="Ingresar teléfono" style="font-size: 18px;">
+                        <span
+                            *ngIf="form.get('businessPhone')?.hasError('required') && form.get('businessPhone')?.touched">
+                            Este campo teléfono es obligatorio
+                        </span>
+
+                        <input formControlName="businessEmail" type="text" class="form-control mt-2 text-dark"
+                            placeholder="Ingresar correo electronico" style="font-size: 18px;">
+                        <span
+                            *ngIf="form.get('businessEmail')?.hasError('required') && form.get('businessEmail')?.touched">
+                            Este campo correo electronico es obligatorio
+                        </span>
+
+                        <input formControlName="businessWebsite" type="email" class="form-control mt-2 text-dark"
+                            placeholder="Ingresar link sitio web" style="font-size: 18px;">
+                     
+
+                        <input formControlName="facebookLink" type="text" class="form-control mt-2 text-dark"
+                            placeholder="Ingresar link de facebook" style="font-size: 18px;">
+                    
+
+                        <input formControlName="twitterLink" type="text" class="form-control mt-2 text-dark"
+                            placeholder="Ingresar link de twitter" style="font-size: 18px;">
+
+
+                        <input formControlName="linkedinLink" type="text" class="form-control mt-2 text-dark"
+                            placeholder="Ingresar link de linkedin" style="font-size: 18px;">
+
+                        <div class="row mt-2 text-center">
+                            <div class="col-lg-6 mt-2">
+                                <button routerLink="/" type="button" class="btn btn-outline-dark"
+                                    style="font-size: large; width: 160px; height: 50px; font-family:'Raleway', sans-serif; font-weight: bold; " >Volver</button>
+                            </div>
+                            <div class="col-lg-6 mt-2">
+                                <button [disabled]="form.invalid" type="submit" class="btn btn-primary"
+                                    style="font-size: large; width: 160px; height: 50px; font-family:'Raleway', sans-serif; font-weight: bold;">Cargar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

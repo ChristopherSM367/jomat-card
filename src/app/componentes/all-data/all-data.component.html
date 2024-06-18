@@ -1,0 +1,26 @@
+<app-progress-bar *ngIf="loading"></app-progress-bar>
+<div *ngIf="!loading" class="container" style="overflow-x: auto;">
+    
+    <table *ngIf="listUsers.length > 0" class="table table-hover" style="margin-top: 5%;">
+        <thead>
+          <tr style="font-family: 'Bebas Neue'; color: white; ">
+            <th style= "font-size: 25px;" scope="col">ID</th>
+            <th style= "font-size: 25px;" scope="col">Nombre</th>
+            <th style= "font-size: 25px;" scope="col">Direccion</th>
+            <th style= "font-size: 25px;" scope="col">Telefono</th>
+            <th style= "font-size: 25px;" scope="col">vista</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listUsers" class="table-active" style="font-family: 'Roboto', sans-serif; font-size: 15px; color: white;">
+            <td>{{item.id}}</td>
+            <td>{{item.businessName}}</td>
+            <td>{{item.businessAddress}}</td>
+            <td>{{item.businessPhone}}</td>
+            <td>
+              <!-- <button type="button" class="btn btn-info" routerLink="/{{item.id}}">Visualizar</button></td> -->
+          </tr>
+        </tbody>
+      </table>
+      <h5 *ngIf="listUsers.length == 0">No hay usuarios para mostrar</h5>
+</div>
