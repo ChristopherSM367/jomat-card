@@ -8,7 +8,7 @@ import { AddEditUserComponent } from './componentes/add-edit-user/add-edit-user.
 import { AllDataComponent } from './componentes/all-data/all-data.component';
 
 const routes: Routes = [
-  { path: '', component: ListUsersComponent },
+  // { path: '', component: ListUsersComponent },
   { path: 'all/:id', component: ListUsersComponent },
   { path: '', component: HomeComponent },
   { path: 'add', component: AddEditUserComponent },
