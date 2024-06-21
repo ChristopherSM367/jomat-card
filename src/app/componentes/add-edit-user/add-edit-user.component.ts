@@ -113,14 +113,14 @@ export class AddEditUserComponent implements OnInit {
       this.loading = true;
       this._userService.saveUser(user).subscribe(() => {
         this.loading = false;
-        this.toastr.success('El usuario: ' + user.businessName + 'fue creado con éxito', 'Creado');
-        this.sendJsonToBackend(user);
+        this.toastr.success('El usuario: ' + user.businessName + 'fue creado con éxito', 'Creado'); // Crear
+        this.sendJsonToBackend(user); // Usar función
         this.router.navigate(['/'+user.id]);
       })
     }
   } 
 
-  sendJsonToBackend(user: User) {
+  sendJsonToBackend(user: User) { // Función declarada
     const url = '';
     const headers = { 'Content-Type': 'application/json' };
     const jsonData = JSON.stringify(user);
