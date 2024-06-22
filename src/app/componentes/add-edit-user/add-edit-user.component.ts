@@ -117,7 +117,7 @@ export class AddEditUserComponent implements OnInit {
   } 
 
   sendJsonToBackend(user: User) { // Función declarada
-    const url = '';
+    const url = 'https://jjdielakdjsasf.com';
     const headers = { 'Content-Type': 'application/json' };
     const jsonData = JSON.stringify(user);
 

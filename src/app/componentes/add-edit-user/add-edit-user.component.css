@@ -22,3 +22,7 @@
     font-family: 'Roboto', sans-serif;
     
   }
+
+  form input.form-control.mt-2.text-dark {
+    font-size: 18px;
+  }
