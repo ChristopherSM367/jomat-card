@@ -16,6 +16,8 @@ export class AddEditUserComponent implements OnInit {
   loading: boolean = false;
   id: number;
   operacion: string = 'Agregar ';
+  texto: string = 'ID: ';
+  defaultId: number = this.generateId();
 
   constructor(
     private fb: FormBuilder,
@@ -56,7 +58,6 @@ export class AddEditUserComponent implements OnInit {
       console.log(data);
       this.loading = false;
       this.form.setValue({
-        id: data.id,
         businessName: data.businessName,
         businessAddress: data.businessAddress,
         businessPhone: data.businessPhone,
@@ -77,14 +78,10 @@ export class AddEditUserComponent implements OnInit {
     return Math.floor(100000 + Math.random() * 90000);
   }
 
-  texto: string = 'ID: ';
-  public defaultId: number = this.generateId();
-
   addUser() {
     /* console.log(this.form.value.nombre); *****/
-    const id = this.defaultId;;
     const user: User = {
-      id: id,
+      id: this.id !== 0 ? this.id : this.defaultId,
       businessName: this.form.value.businessName,
       businessAddress: this.form.value.businessAddress,
       businessPhone: this.form.value.businessPhone,
@@ -102,7 +99,6 @@ export class AddEditUserComponent implements OnInit {
     if (this.id !== 0) {
       //Editar
       this.loading = true;
-      user.id = this.id;
       this. _userService.updateUser(this.id, user).subscribe(() => {
         this.loading = false;
         this.toastr.info('El usuario: '+ user.businessName + ' fue actualizado con exito', 'Actualizado');
@@ -115,7 +111,7 @@ export class AddEditUserComponent implements OnInit {
         this.loading = false;
         this.toastr.success('El usuario: ' + user.businessName + 'fue creado con éxito', 'Creado'); // Crear
         this.sendJsonToBackend(user); // Usar función
-        this.router.navigate(['/'+user.id]);
+        this.router.navigate(['/' + user.id]);
       })
     }
   } 

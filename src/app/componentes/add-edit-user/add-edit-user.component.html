@@ -5,15 +5,15 @@
         <div class="col-ls-1 offset-lg-1">
             <div class="card mb-3" style="max-width: 50rem; border-radius: 4%;">
                 <div class="header text-center mt-4"
-                    style="color: #01588f;  font-size: 37px; font-family:'Bebas Neue', cursive;">{{
-                    operacion }} Usuario</div>
+                    style="color: #01588f;  font-size: 37px; font-family:'Bebas Neue', cursive;">
+                    {{ operacion }} Usuario</div>
                 <div class="card-body" style="border-radius: 4%;">
 
                     <form [formGroup]="form" (ngSubmit)="addUser()" class="form">
 
-                        <input formControlName="id" type="text" class="form-control text-dark"
-                            aria-label="Amount (to the nearest dollar)" readonly [value]=" this.texto + defaultId"
-                            style="font-weight: bold; font-size: 18px;">
+                        <input type="text" class="form-control text-dark"
+                            aria-label="ID" readonly [value]="texto + (id !== 0 ? id : defaultId)"
+                            style="font-weight: bold; font-size: 18px;"> <!-- quitar formControlName="id" -->
 
                         <input formControlName="businessName" type="text" class="form-control mt-2 text-dark"
                             placeholder="Ingresar tu nombre completo" style="font-size: 18px;">
@@ -73,6 +73,8 @@
                         <input formControlName="twitterLink" type="text" class="form-control mt-2 text-dark"
                             placeholder="Ingresar link de twitter" style="font-size: 18px;">
 
+                        <input formControlName="instagramLink" type="text" class="form-control mt-2 text-dark"
+                            placeholder="Ingresar tu link de instagram" style="font-size: 18px;">
 
                         <input formControlName="linkedinLink" type="text" class="form-control mt-2 text-dark"
                             placeholder="Ingresar link de linkedin" style="font-size: 18px;">
