@@ -21,8 +21,12 @@
     "@angular/router": "^15.2.8",
     "@angular/service-worker": "^15.2.8",
     "angularx-qrcode": "^15.0.1",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
     "ngx-toastr": "^16.1.1",
     "rxjs": "~7.8.0",
+    "sqlite3": "^5.1.7",
     "tslib": "^2.6.2",
     "zone.js": "~0.12.0"
   },
