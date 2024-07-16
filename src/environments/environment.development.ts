@@ -1,4 +1,4 @@
 export const environment = {
     production: false,
-    endpoint: 'https://businessutp.fly.dev/'
+    endpoint: 'http://localhost:4200/' // 'https://businessutp.fly.dev/'
 };

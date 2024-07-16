@@ -49,3 +49,6 @@
   width: 100%;
 }
 
+.btn.btn-dark.mt-4:hover {
+  background-color: rgb(10, 10, 10);
+}

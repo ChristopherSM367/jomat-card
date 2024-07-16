@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment';
 export class UserService {
   private myappUrl: string;
   private myApiUrl: string;
-  private users: User[] = [
+  /* private users: User[] = [
     {
       id: 1,
       businessName: '',
@@ -44,44 +44,42 @@ export class UserService {
       businessWebsite: 'http://jomatconsultores.com/',
       backgroundLink: 'http://jomatconsultores.com/img/slider_horizontal/redes.png',
     }
-  ];
-  
+  ]; */
   
   constructor(private http: HttpClient) { 
     this.myappUrl = environment.endpoint;
-
-    this.myApiUrl = 'api/usuarios/'
+    this.myApiUrl = 'api/usuarios/';
   }
 
   getListUser(): Observable<User[]> {
-    //return this.http.get<User[]>(this.myappUrl + this.myApiUrl );
-    return  from([this.users]);
+    return this.http.get<User[]>(this.myappUrl + this.myApiUrl );
+    // return  from([this.users]);
   }
 
   getUserById(id: number): Observable<User> {
-   // const url = `${this.myappUrl}${this.myApiUrl}/${id}`;
-    //return this.http.get<User>(url);
-    return from([this.users[0]]);
+    const url = `${this.myappUrl}${this.myApiUrl}/${id}`;
+    return this.http.get<User>(url);
+    // return from([this.users[0]]);
   }
 
   deleteUser(id: number): Observable<void> {
-    //return this.http.delete<void>(this.myappUrl + this.myApiUrl + id );
-    return from([undefined]);
+    return this.http.delete<void>(this.myappUrl + this.myApiUrl + id );
+    // return from([undefined]);
 
   }
 
   saveUser(user: User): Observable<void>{
-    //return this.http.post<void>(this.myappUrl + this.myApiUrl, user);
-    return from([undefined]);
+    return this.http.post<void>(this.myappUrl + this.myApiUrl, user);
+    // return from([undefined]);
   }
   
   getUser(id: number): Observable<User>{
-    //return this.http.get<User>(this.myappUrl + this.myApiUrl + id);
-    return from([this.users[0]]);
+    return this.http.get<User>(this.myappUrl + this.myApiUrl + id);
+    // return from([this.users[0]]);
   }
 
   updateUser(id: number, user: User):Observable<void> {
-    //return this.http.put<void>(this.myappUrl + this.myApiUrl + id, user);
-    return from([undefined]);
+    return this.http.put<void>(this.myappUrl + this.myApiUrl + id, user);
+    // return from([undefined]);
   }
 }

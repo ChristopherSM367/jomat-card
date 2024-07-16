@@ -16,7 +16,7 @@ export class AddEditUserComponent implements OnInit {
   loading: boolean = false;
   id: number;
   operacion: string = 'Agregar ';
-  texto: string = 'ID: ';
+  texto: string = 'ID ';
   defaultId: number = this.generateId();
 
   constructor(
@@ -99,7 +99,7 @@ export class AddEditUserComponent implements OnInit {
     if (this.id !== 0) {
       //Editar
       this.loading = true;
-      this. _userService.updateUser(this.id, user).subscribe(() => {
+      this._userService.updateUser(this.id, user).subscribe(() => {
         this.loading = false;
         this.toastr.info('El usuario: '+ user.businessName + ' fue actualizado con exito', 'Actualizado');
         this.router.navigate(['/']);
@@ -110,12 +110,13 @@ export class AddEditUserComponent implements OnInit {
       this._userService.saveUser(user).subscribe(() => {
         this.loading = false;
         this.toastr.success('El usuario: ' + user.businessName + 'fue creado con éxito', 'Creado'); // Crear
-        this.sendJsonToBackend(user); // Usar función
+        // this.sendJsonToBackend(user); // Usar función
         this.router.navigate(['/' + user.id]);
       })
     }
   } 
 
+  /*
   sendJsonToBackend(user: User) { // Función declarada
     const url = 'https://jjdielakdjsasf.com';
     const headers = { 'Content-Type': 'application/json' };
@@ -132,6 +133,5 @@ export class AddEditUserComponent implements OnInit {
       }
     )
   }
+  */
 }
-
-// Comprobación del último commit
