@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../database');
 
+// Crear un nuevo usuario
 router.post('/', (req, res) => {
     const {
         businessName,
@@ -58,6 +59,7 @@ router.post('/', (req, res) => {
     });
 });
 
+// Obtener un usuario por ID
 router.get('/:id', (req, res) => {
     const { id } = req.params;
 
@@ -73,6 +75,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
+// Actualizar un usuario
 router.put('/:id', (req, res) => {
     const { id } = req.params;
     const {
@@ -133,6 +136,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
+// Eliminar un usuario
 router.delete('/:id', (req, res) => {
     const { id } = req.params;
 

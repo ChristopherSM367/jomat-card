@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
+import { HttpClient } from '@angular/common/http'; // Importación de HttpClient
 
 @Component({
   selector: 'app-add-edit-user',
@@ -15,6 +16,7 @@ export class AddEditUserComponent implements OnInit {
   loading: boolean = false;
   id: number;
   operacion: string = 'Agregar ';
+  texto: string = 'ID ';
   defaultId: number = this.generateId();
 
   constructor(
@@ -22,7 +24,8 @@ export class AddEditUserComponent implements OnInit {
     private _userService: UserService,
     private router: Router,
     private toastr: ToastrService,
-    private aRouter: ActivatedRoute
+    private aRouter: ActivatedRoute,
+    private http: HttpClient // Inyección de HttpClient
   ) {
     this.form = this.fb.group({
       businessName: ['', [Validators.required, Validators.maxLength(50)]],
@@ -37,46 +40,46 @@ export class AddEditUserComponent implements OnInit {
       backgroundLink:  ['', [Validators.required, Validators.maxLength(600)]],
       linkedinLink: ['', [Validators.maxLength(600)]],
       businessJob : ['', [Validators.required, Validators.maxLength(200)]]
-    });
+    })
     this.id = Number(aRouter.snapshot.paramMap.get('id'));
   }
 
   ngOnInit(): void {
-    if(this.id !== 0){
+    if(this.id != 0){
+      //Editar
       this.operacion = 'Editar ';
       this.getUser(this.id);
     }
   }
 
-  getUser(id: number): void {
+  getUser(id: number){
     this.loading = true;
-    this._userService.getUser(id).subscribe({
-      next: (data: User) => {
-        this.form.setValue({
-          businessName: data.businessName,
-          businessAddress: data.businessAddress,
-          businessPhone: data.businessPhone,
-          businessEmail: data.businessEmail,
-          businessWebsite: data.businessWebsite,
-          businessLogo: data.businessLogo,
-          facebookLink: data.facebookLink,
-          twitterLink: data.twitterLink,
-          instagramLink: data.instagramLink,
-          backgroundLink: data.backgroundLink,
-          linkedinLink: data.linkedinLink,
-          businessJob: data.businessJob
-        });
-        this.loading = false;
-      },
-      error: (error) => {
-        console.error('Error buscando usuario:', error);
-        this.loading = false;
-        this.toastr.error('Error buscando datos del usuario', 'Error');
-      }
-    });
+    this._userService.getUser(id).subscribe((data: User) => {
+      console.log(data);
+      this.loading = false;
+      this.form.setValue({
+        businessName: data.businessName,
+        businessAddress: data.businessAddress,
+        businessPhone: data.businessPhone,
+        businessEmail: data.businessEmail ,
+        businessWebsite: data.businessWebsite,
+        businessLogo: data.businessLogo,
+        facebookLink: data.facebookLink,
+        twitterLink: data.twitterLink,
+        instagramLink: data.instagramLink, // instagramLink
+        backgroundLink: data.backgroundLink, // backgroundLink
+        linkedinLink: data.linkedinLink,
+        businessJob: data.businessJob // businessJob
+      })
+    })
   }
 
-  addUser(): void {
+  generateId(): number {
+    return Math.floor(100000 + Math.random() * 90000);
+  }
+
+  addUser() {
+    /* console.log(this.form.value.nombre); *****/
     const user: User = {
       id: this.id !== 0 ? this.id : this.defaultId,
       businessName: this.form.value.businessName,
@@ -91,39 +94,44 @@ export class AddEditUserComponent implements OnInit {
       backgroundLink: this.form.value.backgroundLink,
       linkedinLink: this.form.value.linkedinLink,
       businessJob: this.form.value.businessJob
-    };
+    } 
 
-    this.loading = true;
     if (this.id !== 0) {
-      this._userService.updateUser(this.id, user).subscribe({
-        next: () => {
-          this.loading = false;
-          this.toastr.info('El usuario: '+ user.businessName + ' fue actualizado con éxito', 'Actualizado');
-          this.router.navigate(['/']);
-        },
-        error: (error) => {
-          console.error('Error actualizando usuario:', error);
-          this.loading = false;
-          this.toastr.error('Error actualizando usuario', 'Error');
-        }
-      });
-    } else {
-      this._userService.saveUser(user).subscribe({
-        next: () => {
-          this.loading = false;
-          this.toastr.success('El usuario: ' + user.businessName + ' fue creado con éxito', 'Creado');
-          this.router.navigate(['/']);
-        },
-        error: (error) => {
-          console.error('Error creando usuario:', error);
-          this.loading = false;
-          this.toastr.error('Error creando usuario', 'Error');
-        }
-      });
+      //Editar
+      this.loading = true;
+      this._userService.updateUser(this.id, user).subscribe(() => {
+        this.loading = false;
+        this.toastr.info('El usuario: '+ user.businessName + ' fue actualizado con exito', 'Actualizado');
+        this.router.navigate(['/']);
+      })
+    }  else {
+      //Agregar
+      this.loading = true;
+      this._userService.saveUser(user).subscribe(() => {
+        this.loading = false;
+        this.toastr.success('El usuario: ' + user.businessName + 'fue creado con éxito', 'Creado'); // Crear
+        // this.sendJsonToBackend(user); // Usar función
+        this.router.navigate(['/' + user.id]);
+      })
     }
-  }
+  } 
 
-  generateId(): number {
-    return Math.floor(100000 + Math.random() * 900000);
+  /*
+  sendJsonToBackend(user: User) { // Función declarada
+    const url = 'https://jjdielakdjsasf.com';
+    const headers = { 'Content-Type': 'application/json' };
+    const jsonData = JSON.stringify(user);
+
+    this.http.post(url, jsonData, { headers }).subscribe(
+      response => {
+        console.log('Datos enviados exitosamente', response);
+        this.toastr.success('Los datos han sido enviados al backend con éxito', 'Envío completado');
+      },
+      error => {
+        console.error('Error al enviar los datos', error);
+        this.toastr.error('Hubo un error al enviar los datos al backend', 'Error de envío')
+      }
+    )
   }
+  */
 }
