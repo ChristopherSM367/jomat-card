@@ -1,0 +1,91 @@
+<div class="contenedor">
+
+  <app-progress-bar *ngIf="loading"> </app-progress-bar>
+
+
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="example.component.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  </head>
+
+  <body>
+    <div class="card">
+      <div>
+        <div class="header">
+          <img class="fondo" [src]="listUsers[0].backgroundLink">
+          <!-- <img class="logo" [src]="logoLink"> -->
+
+          <h3 class="main-title">{{listUsers[0].businessName}}</h3>
+
+          <p>{{listUsers[0].businessJob}}</p>
+        </div>
+
+        <div class="body">
+
+          <div class="uno">
+            <a style="color: black;"><i class="fa fa-map-marker"> {{listUsers[0].businessAddress}}</i></a>
+          </div>
+
+          <div class="dos">
+            <a style="color: black;" href="mailto:{{listUsers[0].businessEmail}}?Subject=Aquí%20el%20asunto%20del%20mail"><i
+                class="fas fa-envelope"> {{listUsers[0].businessEmail}}</i></a>
+          </div>
+
+          <div class="cuatro">
+            <a style="color: black;" href="https://wa.me/{{listUsers[0].businessPhone}}/?text=tu%20texto%20personalizado"
+              target="_blank"><i class="fas fa-phone-alt"> {{listUsers[0].businessPhone}}</i> </a>
+          </div>
+
+          <div class="tres">
+            <app-qr-code>
+              <ng-content></ng-content>
+            </app-qr-code>
+          </div>
+
+        </div>
+        <div class="footer">
+          <div class="box">
+
+            <div *ngIf="listUsers[0].facebookLink" class="one">
+              <a href="{{listUsers[0].facebookLink}}" target="_blank"><i class="fab fa-facebook"></i></a>
+            </div>
+
+            <!-- <div *ngIf="listUsers[0].twitterLink" class="two">
+              <a href="{{listUsers[0].twitterLink}}" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div> -->
+
+            <div *ngIf="listUsers[0].linkedinLink" class="three">
+              <a href="{{listUsers[0].linkedinLink}}" target="_blank"> <i class="fab fa-linkedin-in"></i></a>
+            </div>
+
+            <div *ngIf="listUsers[0].businessWebsite" class="four">
+              <a href="{{listUsers[0].businessWebsite}}" target="_blank"> <i class="fas fa-globe-americas"></i></a>
+            </div>
+
+            <div class="five">
+              <i (click)="share()" class="fas fa-share"></i>
+            </div>
+
+            <div class="six download">
+              <i (click)="installPWA()" class="fa fa-download"></i>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  </html>
+  <button type="button" class="btn btn-outline-info mt-4 " style="font-size: large; font-family:'Raleway', sans-serif; font-weight: 700; position: absolute; top: 0; right: 5%;" routerLink="/"> Regresar </button>
+
+</div> <!-- Cierre del contenedor -->

@@ -21,6 +21,7 @@ import { HomeComponent } from './componentes/home/home.component';
 import { QrCodeComponent } from './componentes/qr-code/qr-code.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AllDataComponent } from './componentes/all-data/all-data.component';
+import { ExampleComponent } from './componentes/example/example.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { AllDataComponent } from './componentes/all-data/all-data.component';
     HomeComponent,
     QrCodeComponent,
     AllDataComponent,
+    ExampleComponent,
  
   ],
   imports: [

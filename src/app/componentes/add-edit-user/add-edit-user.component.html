@@ -80,6 +80,9 @@
               class="form-control mt-2 text-dark"
               placeholder="Ingresar link sitio web"
             >
+            <span *ngIf="form.get('businessWebsite')?.hasError('required') && form.get('businessWebsite')?.touched">
+              Este campo sitio web es obligatorio
+            </span>
 
             <input formControlName="facebookLink" type="text" 
               class="form-control mt-2 text-dark"

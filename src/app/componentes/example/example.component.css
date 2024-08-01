@@ -1,0 +1,274 @@
+
+body{
+  background: transparent;
+  
+}
+.main-title {
+  font-family: 'Font Awesome 5 Free';   
+    font-size: 24.51px;   
+    letter-spacing: 2px;
+}
+
+.card {
+  position: relative;
+  height: 540px;
+  width: 100%;
+  background-color: #ffffff;
+  margin: 80px auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  bottom: 30px;
+  top: 10px;
+}
+
+
+.header {
+  position: absolute;
+  height: 230px;
+  width: 95%;
+  margin:0 auto;
+  left: 0;
+  right: 0;
+  top: -30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  
+}
+
+.logo {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 140px;
+  width: 140px;
+  border-radius: 50%;
+}
+
+.fondo {
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.header h3 {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-family: 'Bebas Neue', cursive;
+  color: rgb(255, 255, 255);
+  -webkit-text-stroke: .2px #000000;
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  width: 100%;
+  
+}
+
+.header p {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  text-align: center;
+  margin-top: auto;
+  transform: translate(-50%, -50%);
+  font-family: 'Bebas Neue', cursive;
+  color: rgb(236, 233, 233);
+  -webkit-text-stroke: 1px #000000;
+  font-size: 28px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.body {
+  position: absolute;
+  height: 150px;
+  left: 5px;
+  right: 5px;
+  top: 52%;
+  border-radius: 12px;
+
+}
+
+.body .uno{
+  margin-top: -70px;
+  list-style: none;
+  text-align: center;
+  font-size: 20px;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+.body .dos{
+  list-style: none;
+  text-align: center;
+  font-size: 20px;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.body .tres{
+  list-style: none;
+  text-align: center;
+  font-size: 20px;
+  width: 100%;
+  margin-top: -27px;
+}
+
+.body .cuatro{
+  list-style: none;
+  text-align: center;
+  font-size: 20px;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.footer {
+ 
+  position: absolute;
+  height: 70px;
+  bottom: -30px;
+  left: 0;
+  right: 0;
+  border-radius: 12px;
+  width:95%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-image: linear-gradient(to right, #484848, #272727);
+}
+
+
+
+.footer i {
+  font-size: 30px;
+  color: #ffffff;
+  transition: all .3s ease-in;
+}
+
+.footer .box .one:hover  i {
+  transform: scale(0.9);
+  color: #0fc3d0;
+  cursor: pointer;
+}
+
+.footer .box .two:hover  i {
+  transform: scale(0.9);
+  color: #0fc3d0;
+  cursor: pointer;
+}
+
+.footer .box .three:hover  i {
+  transform: scale(0.9);
+  color: #0fc3d0;
+  cursor: pointer;
+}
+.footer .box .four:hover  i {
+  transform: scale(0.9);
+  color: #0fc3d0;
+  cursor: pointer;
+}
+.footer .box .five:hover  i {
+  transform: scale(0.9);
+  color: #0fc3d0;
+  cursor: pointer;
+}
+.footer .box .six:hover  i {
+  transform: scale(0.9);
+  color: #0fc3d0;
+  cursor: pointer;
+}
+
+/*Movil*/
+.footer .download i {
+  font-size: 30px;
+  color: #ffffff;
+  transition: all .3s ease-in;
+}
+
+@media only screen and (min-width: 700px) {
+  .footer .download i {
+    display: none;
+  }
+  
+}
+
+
+.box {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin-top: 20px;
+  margin-left: 2%;
+  margin-right: 2%;
+
+}
+
+.one {
+  flex: 1;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.two {
+  flex: 1;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.three {
+  flex: 1;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.four {
+  flex: 1;
+  margin-left: 15px;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.five {
+  flex: 1;
+  margin-left: 15px;
+  margin-right: 10px;
+  text-align: center;
+}
+
+
+.six {
+  flex: 1;
+  margin-left: 10px;
+  margin-right: 15px;
+  text-align: center;
+}
+
+@media only screen and (min-width: 700px) {
+  .six {
+    display: none;
+  }
+  
+}
+
+
+.contenedor {
+  width: 90%;
+  max-width: 1000px;
+  margin:0 auto;
+  overflow: hidden;
+  max-height: 650px;
+}
+
+@media screen and (max-width: 300px){
+  .contenedor {
+    width: 100%;
+  }
+}

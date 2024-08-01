@@ -15,7 +15,7 @@ export class AddEditUserComponent implements OnInit {
   loading: boolean = false;
   id: number;
   operacion: string = 'Agregar ';
-  texto: string = 'ID: ';
+  texto: string = 'ID: '
   defaultId: number = this.generateId();
 
   constructor(
